@@ -6,10 +6,9 @@ import Loading from './spinners/loading';
 
 class TodoComponent extends Component {
     render() {
-        console.log(this.props)
         return (
             <div className="Todo">
-                {this.props.todo.length === 0 ? <button onClick={this.props.fetchTodo}>Get todos</button> : null}
+                {/* {this.props.todo.length === 0 ? <button onClick={this.props.fetchTodo}>Get todos</button> : null} */}
                 {this.props.loading ? <Loading /> : null}
                 <ul>
                     {this.props.todo.map(item => {
@@ -21,6 +20,11 @@ class TodoComponent extends Component {
             </div>
         );
     }
+
+    componentDidMount() {
+        this.props.fetchTodo();
+    }
+    
 }
 
 const mapStateToProps = state => {
